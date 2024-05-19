@@ -1,0 +1,67 @@
+
+<a routerLink="/ProductCategory/create" class="btn btn-info">Add New Product</a>
+<br />
+<hr />
+<button class="btn btn-primary" (click)="LoadData()">Refresh</button>
+<br />
+<hr />
+
+<ejs-grid [dataSource]='ProductCategory' [allowFiltering]='true' [searchSettings]="searchOptions" [filterSettings]='filterSettings' [allowPaging]="true" [allowSorting]="true" [allowPdfExport]="true" [allowExcelExport]="true" [allowResizing]="true" [allowGrouping]="false" [pageSettings]="pageSettings" [showColumnChooser]='true' [toolbar]='toolbarOptions' [selectionSettings]="selectionOptions" showColumnMenu='true' width='auto'
+          (detailDataBound)='detailDataBound($event)'>
+
+    <e-columns>
+        <e-column field='productCategoryID' headerText='Category ID' textAlign='Right' width=90></e-column>
+        <e-column field='name' headerText='Name' width=120></e-column>
+        <e-column headerText='Image' width=120>
+
+            <ng-template #template let-data>
+                <figure *ngIf="data.imagePath">
+                    <img [src]="data.imagePath" width="180" />
+                </figure>
+            </ng-template>
+        </e-column>
+
+        <e-column headerText='Action' width='150' textAlign='Center'>
+            <ng-template #template let-data>
+                <div class="btn-group">
+
+                    <a [routerLink]="['/ProductCategory/edit/', data.productCategoryID]" class="btn btn-warning">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                        </a>
+                    <button class="btn btn-danger" (click)="DeleteProduct(data)">
+                        <i class="fa-solid fa-trash-can"></i>
+                    </button>
+
+                    <button class="btn btn-info" (click)="LoadReport(data.productCategoryID)">
+                        <i class="fa fa-download "></i>
+                        </button>
+                </div>
+            </ng-template>
+        </e-column>
+    </e-columns>
+    <ng-template #detailTemplate let-data>
+        <div class='custom-grid'></div>
+    </ng-template>
+
+</ejs-grid>
+<!--
+<table class="table table-bordered table-hover table-responsive">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Operation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let products of ProductCategory">
+      <td>{{products.productCategoryID}}</td>
+      <td>{{products.name}}</td>
+      <td class="btn-group">
+        <a [routerLink] = "['/ProductCategory/edit/', products.productCategoryID]" class="btn btn-warning">Edit</a>
+        <button class="btn btn-danger" (click)="DeleteProduct(products)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+ -->

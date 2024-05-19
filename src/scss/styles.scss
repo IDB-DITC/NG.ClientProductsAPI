@@ -1,0 +1,55 @@
+/* You can add global styles to this file, and also import other style files */
+
+// If you want to override variables do it here
+@import "variables";
+
+// Import styles with default layout.
+@import "@coreui/coreui/scss/coreui";
+
+// Import Chart.js custom tooltips styles
+@import "@coreui/chartjs/scss/coreui-chartjs";
+
+// Custom styles for this theme
+@import "theme";
+
+// Some temp fixes
+//@import "fixes";
+
+// If you want to add custom CSS you can put it here.
+@import "custom";
+
+// Examples
+// We use those styles to show code examples, you should remove them in your application.
+@import "examples";
+
+
+@import '../../node_modules/@syncfusion/ej2-base/styles/material.css';
+@import '../../node_modules/@syncfusion/ej2-inputs/styles/material.css';
+@import '../../node_modules/@syncfusion/ej2-angular-inputs/styles/material.css';
+
+@import '../../node_modules/@syncfusion/ej2-buttons/styles/material.css';
+@import '../../node_modules/@syncfusion/ej2-popups/styles/material.css';
+@import '../../node_modules/@syncfusion/ej2-angular-notifications/styles/material.css';
+
+body > div {
+  display: none !important;
+}
+
+.hidden {
+  display: none;
+}
+
+.center-element {
+  margin: 20px auto;
+}
+
+.center {
+  justify-content: center;
+  text-align: center;
+}
+
+.e-float-input.e-control-wrapper .e-float-text::after {
+  content: "*";
+  color: red;
+}
+
